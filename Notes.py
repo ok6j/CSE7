@@ -107,3 +107,16 @@ while response != "Hello":
     response = input("Say \"Hello\"")
 
 print("Hello \nWorld")   # \n means newline
+
+# Comparisons
+print(1 == 1)  # Two equal signs to compare
+print(1 != 2)  # One is not equal to 2
+print(not False)   # This print is True
+print(1 == 1 and 4 <= 5)
+print(1 < 0 or 5 > 1)  # Only one statement needs to be true
+
+# Recasting
+c = '1'
+print(c == 1)  # False - C is a string. 1 is a int or
+print(int(c) == 1)  # True - Compares two ints
+print(c == str(1))  # True - Compares two strings
