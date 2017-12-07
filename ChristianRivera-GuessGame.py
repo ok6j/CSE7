@@ -1,9 +1,8 @@
 import random
 # Christian Rivera
 
-
+print("I'm guessing a number between 1-50")
 you_belong_in_a_museum = (random.randint(1, 50))
-print(you_belong_in_a_museum)
 
 
 for x in range(5):
