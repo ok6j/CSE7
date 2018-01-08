@@ -4,7 +4,7 @@ import random
 print("I'm guessing a number between 1-50")
 you_belong_in_a_museum = (random.randint(1, 50))
 
-
+# Describes only one turn. The while loop is the Game Controller.
 for x in range(5):
     b = input("What number am I thinking of? ")
     if b == str(you_belong_in_a_museum):
