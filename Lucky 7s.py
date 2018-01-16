@@ -14,10 +14,13 @@ while money > 0:
         money += 4
         if money > highest:
             money = highest
-            (played): rounds
+            played = rounds
     else:
         money -= 1
         rounds += 1
-    if money == 0:
-            print("You shouldve have stopped at round: %s when you had %s money"(rounds, highest))
-
+if highest == 0:
+    print("You've played %s rounds!" % str(played))
+    if highest < 15:
+        print("You didn't gain or lost.")
+    elif highest > 14:
+            print("You should've stopped at round %s when you had $%s" % (rounds, highest))
