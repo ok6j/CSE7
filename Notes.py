@@ -127,10 +127,10 @@ the_count = [1, 2, 3, 4, 5]
 characters = ["graves", "Dory", "Boots", "Dora", "Shrek", "Carl"]
 print(characters[0])
 print(characters[4])
-
-print(len(characters))
-
-# Going through lists
+#
+# print(len(characters))
+#
+# # Going through lists
 for char in characters:
     print(char)
 
@@ -153,4 +153,30 @@ print(listOne)
 newStr = "".join(listOne)
 print(newStr)
 
-#
+# adding stuff to a list
+characters.append("Ironman/Batman/whomever you want")
+print(characters)
+
+characters.append("Talon")
+print(characters)
+
+#removing things from a list
+characters.remove("Carl")
+print(characters)
+
+characters.pop(5)
+print(characters)
+
+# the string class
+import string
+print(string.ascii_letters)
+print(string.ascii_lowercase)
+print(string.digits)
+print(string.punctuation)
+
+# make a list of every thing they've guessed and make it so its like they have guessed all the punctuation
+
+strTwo = 'ThIs sEnTeNcE iS UnUSuAl'
+lowercase = strTwo.lower()
+print(lowercase)    # Changes it to lowercase
+
