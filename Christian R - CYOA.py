@@ -5,11 +5,11 @@
 # 3.c Rooms
 # 4.Instantiation of classes
 # 5. Controller
-inventory = ("nothing")
+inventory = None
 
 
 class Item(object):
-    def __init__ (self, name, description, value):
+    def __init__(self, name, description, value):
         self.name = name
         self.description = description
         self.used = False
@@ -19,7 +19,6 @@ class Item(object):
         if self.used:
             print("usable")
         else:
-            self.item.remove
             self.used = True
 
 
@@ -48,7 +47,7 @@ class Boosts(Item):
 
     def buffed(self):
         if self.buff:
-            print("You are buffed with %s"% self.buff.name)
+            print("You are buffed with %s" % self.buff.name)
 
         else:
             print("You are not buffed")
@@ -59,12 +58,8 @@ class HpBoosts(Item):
         super(HpBoosts, self).__init__("Hp boost", "Its a green cross and its glowing", "Nothing")
         self.healing = healing
 
-    def healed(self):
-        if self.healing:
-            self.healing =+ self.hp
-            if self.maxhp:
-                self.maxhp = 100
-                print("You're already max hp.")
+    def heal(self, character):
+        character.hp += self.healing
 
 
 class Dagger(Weapon):
@@ -131,12 +126,13 @@ stopwatch = Item("stopwatch", "Its a broken stopwatch", 1)
 fiendish_codex = Item("Fiendish Codex", "a large glowing book", 3)
 
 print(item2.description)
+
+
 class Characterlmao(object):
-    def __init__(self, item, description, name, hp, defense):
+    def __init__(self, item, description, name, hp, defense,):
         self.name = name
         self.description = description
-        self.inventory = "Water, Banana, and Soda"
-        self.item = item
+        self.inventory = [item]
         self.takedamage = False
         self.death = False
         self.max_hp = 100
@@ -164,8 +160,14 @@ class Characterlmao(object):
             print("lol fighting lmao xd")
             self.fight = True
 
+    def use_boost(self, boost_item):
+        if self.hp == self.max_hp:
+            print("You are already at full health.")
+        else:
+            boost_item.heal(self)
 
-character1 = Characterlmao("Nothing", "Black", "Jesus", 10, 12)
+
+character1 = Characterlmao(None, "Black", "Jesus", 10, 12)
 character1.fighting()
 print(character1.fight)
 character1.if_die_lol()
@@ -178,8 +180,7 @@ west_Big_Wraiths = Characterlmao(stopwatch, "Scary looking wraith", "Big_Wraith"
 west_Big_Golem = Characterlmao(BlastingWand, "A huge golem", "Big Golem", 13, 14)
 east_Big_Golem = Characterlmao(fiendish_codex, "A huge golem", "Big Golem", 13, 14)
 
-enemies =(Vilemaw, east_Big_Golem, east_Big_wolf, east_Big_Wraiths, west_Big_Golem, west_Big_wolf, west_Big_Wraiths,
-          )
+enemies = (Vilemaw, east_Big_Golem, east_Big_wolf, east_Big_Wraiths, west_Big_Golem, west_Big_wolf, west_Big_Wraiths,)
 
 
 class Room(object):
@@ -212,20 +213,20 @@ west_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', No
                                 'There\'s two staircases one leading south and one leading north.')
 
 southeast_inhibitor = Room("southeast_inhibitor", "bottom_of_the_southeast stairs", "east_shopkeeper_platform",
-                            "purple_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
-                            "It appears you can go east and north.")
+                           "purple_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
+                           "It appears you can go east and north.")
 
 southwest_inhibitor = Room("southwest_inhibitor", "bottom_of_the_southwest stairs", "west_shopkeeper_platform",
-                            "blue_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
-                            "It appears you can go west and north.")
+                           "blue_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
+                           "It appears you can go west and north.")
 
 northeast_inhibitor = Room("northeast_inhibitor", "bottom_of_the_northeast_stairs", "east_shopkeeper_platform",
                            "purple_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
-                            "It appears you can go east and north.")
+                           "It appears you can go east and north.")
 
 northwest_inhibitor = Room("northwest_inhibitor", "bottom_of_the_northwest_stairs", "west_shopkeeper_platform",
                            "blue_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
-                            "It appears you can go west and north.")
+                           "It appears you can go west and north.")
 
 purple_nexus = Room("purple_nexus", "northeast_inhibitor", None, 'southwest_inhibitor', None, None, None, None, None,
                     "A big purple crystal")

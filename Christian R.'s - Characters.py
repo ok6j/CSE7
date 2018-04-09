@@ -25,6 +25,8 @@ class Characterlmao(object):
         self.stats = stats
         self.fight = False
         self.location = None  # A Room Object
+        self.hp = 100
+        self.maxHP = 100
 
     def if_die_lol(self):
         if self.death:
@@ -43,6 +45,12 @@ class Characterlmao(object):
         else:
             print("lol fighting lmao xd")
             self.fight = True
+
+    def use_boost(self, boost_item):
+        if self.hp == self.maxHP:
+            print("You are already at full health.")
+        else:
+            boost_item.heal(self)
 
 character1 = Characterlmao("Nothing","Black", "Jesus", "100000 hp lmao")
 character1.fighting()
