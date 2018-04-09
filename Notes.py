@@ -123,60 +123,135 @@
 
 # Lists
 
-the_count = [1, 2, 3, 4, 5]
-characters = ["graves", "Dory", "Boots", "Dora", "Shrek", "Carl"]
-print(characters[0])
-print(characters[4])
+# the_count = [1, 2, 3, 4, 5]
+# characters = ["graves", "Dory", "Boots", "Dora", "Shrek", "Carl"]
+# print(characters[0])
+# print(characters[4])
+# #
+# # print(len(characters))
+# #
+# # # Going through lists
+# for char in characters:
+#     print(char)
 #
-# print(len(characters))
+# for numbers in the_count:
+#     print(numbers ** 2)
 #
-# # Going through lists
-for char in characters:
-    print(char)
+# len(characters)
+# range(3)  # Makes a list of the numbers from 0 to 2
+# range(len(characters))  # Makes a list of ALL INDICES
+#
+# for num in range(len(characters)):
+#     char = characters[num]
+#     print("The character at index %d is %s" % (num, char))
+#
+# str1 = "Hello World!"
+# listOne = list(str1)
+# print(listOne)
+# listOne[11] = '.'
+# print(listOne)
+# newStr = "".join(listOne)
+# print(newStr)
+#
+# # adding stuff to a list
+# characters.append("Ironman/Batman/whomever you want")
+# print(characters)
+#
+# characters.append("Talon")
+# print(characters)
+#
+# #removing things from a list
+# characters.remove("Carl")
+# print(characters)
+#
+# characters.pop(5)
+# print(characters)
+#
+# # the string class
+# import string
+# print(string.ascii_letters)
+# print(string.ascii_lowercase)
+# print(string.digits)
+# print(string.punctuation)
+#
+# # make a list of every thing they've guessed and make it so its like they have guessed all the punctuation
+#
+# strTwo = 'ThIs sEnTeNcE iS UnUSuAl'
+# lowercase = strTwo.lower()
+# print(lowercase)    # Changes it to lowercase
+# Dictionaries - Make up a key value pair
+dictionary = {'name': 'Lance', 'age': 18, "height": 6 * 12 + 2}
 
-for numbers in the_count:
-    print(numbers ** 2)
+# Accessing from a dictionary
+print(dictionary['name'])
+print(dictionary['age'])
+print(dictionary["height"])
 
-len(characters)
-range(3)  # Makes a list of the numbers from 0 to 2
-range(len(characters))  # Makes a list of ALL INDICES
+# Adding to a dictionary
+dictionary['eye color'] = 'blue'
+dictionary['toilet paper'] = True
+print(dictionary)
 
-for num in range(len(characters)):
-    char = characters[num]
-    print("The character at index %d is %s" % (num, char))
-
-str1 = "Hello World!"
-listOne = list(str1)
-print(listOne)
-listOne[11] = '.'
-print(listOne)
-newStr = "".join(listOne)
-print(newStr)
-
-# adding stuff to a list
-characters.append("Ironman/Batman/whomever you want")
-print(characters)
-
-characters.append("Talon")
-print(characters)
-
-#removing things from a list
-characters.remove("Carl")
-print(characters)
-
-characters.pop(5)
-print(characters)
-
-# the string class
-import string
-print(string.ascii_letters)
-print(string.ascii_lowercase)
-print(string.digits)
-print(string.punctuation)
-
-# make a list of every thing they've guessed and make it so its like they have guessed all the punctuation
-
-strTwo = 'ThIs sEnTeNcE iS UnUSuAl'
-lowercase = strTwo.lower()
-print(lowercase)    # Changes it to lowercase
+# large_dictionary = {
+#     "California": "Ca",
+#     "Washington": "WA",
+#     "Illinois": "IL"
+# }
+# print(large_dictionary["California"])
+# print(large_dictionary["California"])
+# print(large_dictionary["Washington"]) #Square brackets to access
+# larger_dictionary = {
+#         "California": [
+#             "Fresno",
+#             "Clovis"
+#             "Sacramento"
+#         ],
+#
+#         "Washington": [
+#             "Seattle",
+#             "Tacoma",
+#             "Olympia"
+#             "Spokane"
+#         ],
+#         "Illinois": [
+#             "Chicago",
+#             "Naperville"
+#             "Peoria"
+#
+#         ]
+# }
+#
+# print(larger_dictionary["Illinois"])
+# print(larger_dictionary["Illinois"][0])
+# # print(larger_dictionary["Washington"][3])
+# largest_dictionary = {
+#     "CA":   {
+#         'Name': "California",
+#         'Population': 39250000,
+#         'Border St': [
+#             'Oregon',
+#             'Nevada',
+#             'Arizona'
+#         ]
+#     },
+#     "MI": {
+#         "Name": "Michigan",
+#         "Population": 9928000,
+#         "Border St": [
+#                 'Wiscon',
+#                 'Ohio',
+#                 "Indiana"
+#         ]
+#     },
+#     "FL": {
+#         "Name": "Florida",
+#         "Population":20610000,
+#         "Border st": [
+#             'Georgia',
+#             'Alabama'
+#         ]
+#     }
+# }
+# print(largest_dictionary["FL"]["Border st"][1])
+# print(largest_dictionary["MI"]["Name"])
 
