@@ -180,7 +180,7 @@ west_Big_Wraiths = Characterlmao(stopwatch, "Scary looking wraith", "Big_Wraith"
 west_Big_Golem = Characterlmao(BlastingWand, "A huge golem", "Big Golem", 13, 14)
 east_Big_Golem = Characterlmao(fiendish_codex, "A huge golem", "Big Golem", 13, 14)
 
-enemies = (Vilemaw, east_Big_Golem, east_Big_wolf, east_Big_Wraiths, west_Big_Golem, west_Big_wolf, west_Big_Wraiths,)
+enemies = (Vilemaw, east_Big_Golem, east_Big_wolf, east_Big_Wraiths, west_Big_Golem, west_Big_wolf, west_Big_Wraiths)
 
 
 class Room(object):
@@ -204,11 +204,11 @@ class Room(object):
 # west_house = Room("West of House", 'north_house')
 # north_house = Room("North of House", None)
 
-east_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', None, 'southeast_inhibitor', None, None,
+east_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', 'southeast_inhibitor', None, None, None,
                                 None, None, None, 'You are on a shopkeeper platform, he appears ecstatic.\n'
                                 'There\'s two staircases one leading south and one leading north.',)
 
-west_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', None, 'southeast_inhibitor', None, None,
+west_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', 'southeast_inhibitor', None, None, None,
                                 None, None, None, 'You are on a shopkeeper platform, he appears ecstatic.\n'
                                 'There\'s two staircases one leading south and one leading north.')
 
@@ -276,11 +276,11 @@ southwest_jungle = Room("southwest_jungle", "bottom_of_the_southwest_stairs", "w
 
 east_golem_camp = Room("east_golem_camp", "east_altar", "northeast_jungle", "first_northeast_turrent", None, None,
                         None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
-                        'There\'s a path to the south and a path to the north.')
+                       'There\'s a path to the south and a path to the north.')
 
 west_golem_camp = Room("west_golem_camp", "west_altar", "northwest_jungle", "first_northwest_turrent", None, None,
                         None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
-                        'There\'s a path to the south and the north.')
+                       'There\'s a path to the south and the north.')
 
 west_wolves_camp = Room("west_wolves_camp", "west-altar", None, None, None, None, None, None, None,
                         'You are met by 3 wolves, the biggest in the center.\n'
@@ -291,10 +291,10 @@ east_wolves_camp = Room("east_wolves_camp", "west-altar", None, None, None, None
                         'There\'s a path to the north')
 
 east_altar = Room("east_altar", "west_golem_camp", "first_southwest_turrent", "hp_pack", None,
-                  "second_northwest_turrent",None, "west_wolves_camp", "west_wraiths_camp", "An altar of souls.")
+                  "second_northwest_turrent", None, "west_wolves_camp", "west_wraiths_camp", "An altar of souls.")
 
 west_altar = Room("west_altar", "east_golem_camp", "first_southeast_turrent", "hp_pack", None,
-                  "second_northeast_turrent",None, "east_wolves_camp", "east_wraiths_camp", "An altar of souls.")
+                  "second_northeast_turrent", None, "east_wolves_camp", "east_wraiths_camp", "An altar of souls.")
 
 west_wraiths_camp = Room("west_wraiths_camp", "west_altar", "bottom_of_southwest_stairs", None, None, None, None, None,
                          None, "You are met with 3 wraiths")
@@ -326,36 +326,32 @@ first_northwest_turrent = Room("first_northwest_turrent", "second_northwest_turr
 first_southwest_turrent = Room("first_southwest_turrent", "second_southwest_turrent",
                                "bottom_of_the_southwest_stairs", None, None, None, None, None, None, "Its a turrent.")
 
-Vilemaw_Room = Room("Vilemaw_Room", "second_northeast_turrent", "second_northwest_turrent", None, None, None, None, None, None,
-                    "Big monster spider lmao")
+Vilemaw_Room = Room("Vilemaw_Room", "second_northeast_turrent", "second_northwest_turrent", None, None, None, None,
+                    None, None, "Big monster spider lmao")
 
 hp_pack = Room("hp_pack", "west_altar" "east_altar", None, None, None, None, None, None, None, "Pack of hp")
 
 
-current_node = Room
+current_node = east_shopkeeper_platform
 directions = ['north', 'south', 'northeast', 'east', 'southeast', 'west', 'southwest', 'northwest']
 short_directions = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw']
 
 while True:
     print(current_node.name)
     print(current_node.description)
-    if Room.enemies is not None:
-        print(current_node.name)
-        print(Room.description)
-        character1.fighting(current_node.enemies)
     command = input('>_').lower().strip()
     if command == 'quit':
         quit(0)
+    elif command in short_directions:
+        location = short_directions.index(command)
+        command = directions[location]
     if command in directions:
-        index = directions.index(command)
-        command = short_directions[index]
-    if command in short_directions:
         try:
             current_node.move(command)
         except KeyError:
             print('You can\'t go this way')
     else:
         print('command not Recognized')
-    if current_node == east_shopkeeper_platform or west_shopkeeper_platform:
-        print('You arrive at the Helipad, you get onto the helicopter and leave the Island. GOOD JOB!')
+    if current_node == ZzRotPortal:
+        print("The void consumes you, you become Vilemaw")
         exit(0)
