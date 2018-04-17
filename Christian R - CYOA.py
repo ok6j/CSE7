@@ -88,7 +88,9 @@ class GuardianSword(Weapon):
         self.revive = revive
 
     def liveagain(self, character):
-        character.location = east_shopkeeper_platform  # Defined as a room
+        if character1.die_lol:
+            if GuardianSword in inventory:
+                character.location = east_shopkeeper_platform  # Defined as a room
 
 
 class ClothArmor(Armor):
@@ -142,23 +144,29 @@ class Characterlmao(object):
         self.fight = False
         self.location = None  # A Room Object
 
-    def if_die_lol(self):
-        if self.death:
-            print("you are alive lmao")
-        else:
-            print("you died lol")
-            self.death = True
-
-    def name_change_lmao(self):
-            if input("no u"):
-                    quit()
+    def die_lol(self):
+        if character1.hp == 100:
+            print("you died lmao")
+            exit(0)
 
     def fighting(self):
-        if self.fight:
-            print("u are not fighting lmao")
+        if input("fight"):
+            if enemies != Room:
+                print("you are fighting nothing")
         else:
             print("lol fighting lmao xd")
             self.fight = True
+            if character1.inventory != LongSword in west_wolves_camp:
+                character1.die_lol()
+            else:
+                if enemies.hp != 100:
+                    enemies.die_lol()
+            if character1.inventory != LongSword in east_wolves_camp:
+                character1.die_lol()
+            if character1.inventory != BFSword in west_Big_Golem:
+                character1.die_lol()
+                if character1.hp(self):
+                    character1.die_lol()
 
     def use_boost(self, boost_item):
         if self.hp == self.max_hp:
@@ -166,11 +174,16 @@ class Characterlmao(object):
         else:
             boost_item.heal(self)
 
+class enemies(Characterlmao):
+    def __init__(self):
+        super(enemies, self).__init__(None, None, None)
+
+class Vilemaw()
 
 character1 = Characterlmao(None, "Black", "Jesus", 10, 12)
 character1.fighting()
 print(character1.fight)
-character1.if_die_lol()
+character1.die_lol()
 print(character1.death)
 Vilemaw = Characterlmao(ZzRotPortal, "A large spider looking creature", "Vilemaw", 100, 100)
 east_Big_wolf = Characterlmao(ClothArmor, "Big monsterous looking wolf", "Large Wolf", 14, 16)
@@ -180,7 +193,7 @@ west_Big_Wraiths = Characterlmao(stopwatch, "Scary looking wraith", "Big_Wraith"
 west_Big_Golem = Characterlmao(BlastingWand, "A huge golem", "Big Golem", 13, 14)
 east_Big_Golem = Characterlmao(fiendish_codex, "A huge golem", "Big Golem", 13, 14)
 
-enemies = (Vilemaw, east_Big_Golem, east_Big_wolf, east_Big_Wraiths, west_Big_Golem, west_Big_wolf, west_Big_Wraiths)
+
 
 
 class Room(object):
@@ -275,14 +288,14 @@ southwest_jungle = Room("southwest_jungle", "bottom_of_the_southwest_stairs", "w
                         'There\'s a path to the north and a path to the south.')
 
 east_golem_camp = Room("east_golem_camp", "east_altar", "northeast_jungle", "first_northeast_turrent", None, None,
-                        None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
+                       None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
                        'There\'s a path to the south and a path to the north.')
 
 west_golem_camp = Room("west_golem_camp", "west_altar", "northwest_jungle", "first_northwest_turrent", None, None,
-                        None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
+                       None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
                        'There\'s a path to the south and the north.')
 
-west_wolves_camp = Room("west_wolves_camp", "west-altar", None, None, None, None, None, None, None,
+west_wolves_camp = Room("west_wolves_camp", "east-altar", None, None, None, None, None, None, None,
                         'You are met by 3 wolves, the biggest in the center.\n'
                         'There\'s a path to the north')
 
@@ -351,7 +364,7 @@ while True:
         except KeyError:
             print('You can\'t go this way')
     else:
-        print('command not Recognized')
+        print('command not recognized')
     if current_node == ZzRotPortal:
         print("The void consumes you, you become Vilemaw")
         exit(0)
