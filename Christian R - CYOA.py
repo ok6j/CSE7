@@ -145,7 +145,7 @@ class Characterlmao(object):
         self.location = None  # A Room Object
 
     def die_lol(self):
-        if character1.hp == 100:
+        if character1.hp == 0:
             print("you died lmao")
             exit(0)
 
@@ -159,7 +159,7 @@ class Characterlmao(object):
             if character1.inventory != LongSword in west_wolves_camp:
                 character1.die_lol()
             else:
-                if enemies.hp != 100:
+                if enemies.hp == 0:
                     enemies.die_lol()
             if character1.inventory != LongSword in east_wolves_camp:
                 character1.die_lol()
@@ -174,26 +174,28 @@ class Characterlmao(object):
         else:
             boost_item.heal(self)
 
-class enemies(Characterlmao):
-    def __init__(self):
-        super(enemies, self).__init__(None, None, None)
 
-class Vilemaw()
+class enemies(Characterlmao):
+    def __init__(self, inventory, description, name, hp, defense):
+        super(enemies, self).__init__(inventory, description, name, hp, defense)
+
+
+class Vilemaw(enemies):
+    def __init__(self):
+        super(Vilemaw, self).__init__([ZzRotPortal], "A large spider looking creature", "Vilemaw", 100, 100)
+
 
 character1 = Characterlmao(None, "Black", "Jesus", 10, 12)
 character1.fighting()
 print(character1.fight)
 character1.die_lol()
 print(character1.death)
-Vilemaw = Characterlmao(ZzRotPortal, "A large spider looking creature", "Vilemaw", 100, 100)
 east_Big_wolf = Characterlmao(ClothArmor, "Big monsterous looking wolf", "Large Wolf", 14, 16)
 west_Big_wolf = Characterlmao(BFSword, "Big monsterous looking wolf", "Large Wolf", 14, 16)
 east_Big_Wraiths = Characterlmao(NullMagicMantle, "Scary looking wraith", "Big_Wraith", 13, 14)
 west_Big_Wraiths = Characterlmao(stopwatch, "Scary looking wraith", "Big_Wraith", 13, 14)
 west_Big_Golem = Characterlmao(BlastingWand, "A huge golem", "Big Golem", 13, 14)
 east_Big_Golem = Characterlmao(fiendish_codex, "A huge golem", "Big Golem", 13, 14)
-
-
 
 
 class Room(object):
