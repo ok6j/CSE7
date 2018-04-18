@@ -6,7 +6,8 @@
 # 4.Instantiation of classes
 # 5. Controller
 inventory = None
-
+import sys
+import random
 
 class Item(object):
     def __init__(self, name, description, value):
@@ -120,7 +121,6 @@ class ZzRotPortal(Item):
     def __init__(self):
         super(ZzRotPortal, self).__init__("Zz'Rot Portal", "A rock encrusted void", 350)
 
-
 nigerian = Weapon("Nigerian", "Whatever", 100, 9)
 item1 = ZzRotPortal()
 item2 = nigerian
@@ -131,42 +131,45 @@ print(item2.description)
 
 
 class Characterlmao(object):
-    def __init__(self, item, description, name, hp, defense,):
+    def __init__(self, item, description, name, hp, defense):
         self.name = name
         self.description = description
         self.inventory = [item]
-        self.takedamage = False
         self.death = False
         self.max_hp = 100
         self.max_defense = 100
         self.hp = hp
         self.defense = defense
-        self.fight = False
-        self.location = None  # A Room Object
+        self.fighta = False
+        self.location = None # A Room Object
+        self.enemy = False
 
-    def die_lol(self):
-        if character1.hp == 0:
-            print("you died lmao")
-            exit(0)
+    def take_damage(self, amt):
+            self.hp -= amt
 
-    def fighting(self):
-        if input("fight"):
-            if enemies != Room:
-                print("you are fighting nothing")
-        else:
-            print("lol fighting lmao xd")
-            self.fight = True
-            if character1.inventory != LongSword in west_wolves_camp:
-                character1.die_lol()
-            else:
-                if enemies.hp == 0:
-                    enemies.die_lol()
-            if character1.inventory != LongSword in east_wolves_camp:
-                character1.die_lol()
-            if character1.inventory != BFSword in west_Big_Golem:
-                character1.die_lol()
-                if character1.hp(self):
-                    character1.die_lol()
+    def fight(self, enemy):
+            print('You engage in a fight with the %s' % enemy.name)
+            random.randit = ([Enemies], character1)
+            first_strike = random.randint
+
+        while self.hp >= 0 and Enemies.hp > 0:
+                input()
+                if first_strike == Enemies:
+                    Enemies.do_dmg(self)
+                print('%s attacks you' % Enemies.name)
+                if self.hp <= 0:
+                    self.death = True
+                    print('you died lmao')
+                    sys.exit(0)
+                elif first_strike == self:
+                    if self.Weapon == 0:
+                        print('You have no weapon to fight with, so you do no damage. The dinosaur easily kills you')
+                    sys.exit(0)
+                    else:
+                    self.swing(Enemies)
+                    print('you attacked the %s' % Enemies.name)
+                    if Enemies.hp <= 0:
+                        print('The %s died' % Enemies.name)
 
     def use_boost(self, boost_item):
         if self.hp == self.max_hp:
@@ -174,15 +177,21 @@ class Characterlmao(object):
         else:
             boost_item.heal(self)
 
+def die_lol(self, Enemies):
+    if self.hp <= 0 or self.hp == 0:
+        print("you died lmao")
+        
 
-class enemies(Characterlmao):
+class Enemies(Characterlmao):
     def __init__(self, inventory, description, name, hp, defense):
-        super(enemies, self).__init__(inventory, description, name, hp, defense)
+        super(Enemies, self).__init__(inventory, description, name, hp, defense)
 
 
-class Vilemaw(enemies):
-    def __init__(self):
-        super(Vilemaw, self).__init__([ZzRotPortal], "A large spider looking creature", "Vilemaw", 100, 100)
+class Vilemaw(Enemies):
+    def __init__(Enemies):
+        super(Vilemaw, Enemies).__init__(ZzRotPortal, "Big spider boss looms over you", "Vilemaw", 100, 100)
+
+def take_damage(self, Enemies):
 
 
 character1 = Characterlmao(None, "Black", "Jesus", 10, 12)
