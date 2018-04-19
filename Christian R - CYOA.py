@@ -121,13 +121,9 @@ class ZzRotPortal(Item):
     def __init__(self):
         super(ZzRotPortal, self).__init__("Zz'Rot Portal", "A rock encrusted void", 350)
 
-nigerian = Weapon("Nigerian", "Whatever", 100, 9)
-item1 = ZzRotPortal()
-item2 = nigerian
+
 stopwatch = Item("stopwatch", "Its a broken stopwatch", 1)
 fiendish_codex = Item("Fiendish Codex", "a large glowing book", 3)
-
-print(item2.description)
 
 
 class Characterlmao(object):
@@ -141,31 +137,35 @@ class Characterlmao(object):
         self.hp = hp
         self.defense = defense
         self.fighta = False
-        self.location = None # A Room Object
+        self.location = None  # A Room Object
         self.enemy = False
 
     def take_damage(self, amt):
             self.hp -= amt
 
+    def swing(self, target):
+        target.take_damage(self.weapon.damaged)
+        print('%s attacks %s' % (self.name, target.name))
+
     def fight(self, enemy):
-            print('You engage in a fight with the %s' % enemy.name)
-            random.randit = ([Enemies], character1)
-            first_strike = random.randint
+        print('You engage in a fight with the %s' % enemy.name)
+        random.randit = ([Enemies], character1)
+        first_strike = random.randint
 
         while self.hp >= 0 and Enemies.hp > 0:
-                input()
+            if input("fight"):
                 if first_strike == Enemies:
                     Enemies.do_dmg(self)
                 print('%s attacks you' % Enemies.name)
                 if self.hp <= 0:
                     self.death = True
-                    print('you died lmao')
+                    print("you died lmao")
                     sys.exit(0)
                 elif first_strike == self:
                     if self.Weapon == 0:
                         print('You have no weapon to fight with, so you do no damage. The dinosaur easily kills you')
                     sys.exit(0)
-                    else:
+                else:
                     self.swing(Enemies)
                     print('you attacked the %s' % Enemies.name)
                     if Enemies.hp <= 0:
@@ -180,7 +180,7 @@ class Characterlmao(object):
 def die_lol(self, Enemies):
     if self.hp <= 0 or self.hp == 0:
         print("you died lmao")
-        
+
 
 class Enemies(Characterlmao):
     def __init__(self, inventory, description, name, hp, defense):
@@ -191,16 +191,16 @@ class Vilemaw(Enemies):
     def __init__(Enemies):
         super(Vilemaw, Enemies).__init__(ZzRotPortal, "Big spider boss looms over you", "Vilemaw", 100, 100)
 
-def take_damage(self, Enemies):
+    def swing(self, target):
+        target.take_damage()
+        print('%s attacks %s' % (self.name, target.name))
 
 
 character1 = Characterlmao(None, "Black", "Jesus", 10, 12)
-character1.fighting()
 print(character1.fight)
-character1.die_lol()
 print(character1.death)
-east_Big_wolf = Characterlmao(ClothArmor, "Big monsterous looking wolf", "Large Wolf", 14, 16)
-west_Big_wolf = Characterlmao(BFSword, "Big monsterous looking wolf", "Large Wolf", 14, 16)
+east_Big_wolf = Characterlmao(ClothArmor, "Big monstrous looking wolf", "Large Wolf", 14, 16)
+west_Big_wolf = Characterlmao(BFSword, "Big monstrous looking wolf", "Large Wolf", 14, 16)
 east_Big_Wraiths = Characterlmao(NullMagicMantle, "Scary looking wraith", "Big_Wraith", 13, 14)
 west_Big_Wraiths = Characterlmao(stopwatch, "Scary looking wraith", "Big_Wraith", 13, 14)
 west_Big_Golem = Characterlmao(BlastingWand, "A huge golem", "Big Golem", 13, 14)
@@ -208,7 +208,8 @@ east_Big_Golem = Characterlmao(fiendish_codex, "A huge golem", "Big Golem", 13, 
 
 
 class Room(object):
-    def __init__(self, name, north, south, west, east, northeast, northwest, southeast, southwest, description):
+    def __init__(self, name, north, south, west, east, northeast, northwest, southeast, southwest, description,
+                 enemies):
         self.name = name
         self.north = north
         self.east = east
@@ -219,6 +220,7 @@ class Room(object):
         self.southeast = southeast
         self.southwest = southwest
         self.description = description
+        self.enemies = enemies
 
     def move(self, direction):
         global current_node
@@ -230,130 +232,133 @@ class Room(object):
 
 east_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', 'southeast_inhibitor', None, None, None,
                                 None, None, None, 'You are on a shopkeeper platform, he appears ecstatic.\n'
-                                'There\'s two staircases one leading south and one leading north.',)
+                                'There\'s two staircases one leading south and one leading north.', None)
 
 west_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', 'southeast_inhibitor', None, None, None,
                                 None, None, None, 'You are on a shopkeeper platform, he appears ecstatic.\n'
-                                'There\'s two staircases one leading south and one leading north.')
+                                'There\'s two staircases one leading south and one leading north.', None)
 
 southeast_inhibitor = Room("southeast_inhibitor", "bottom_of_the_southeast stairs", "east_shopkeeper_platform",
                            "purple_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
-                           "It appears you can go east and north.")
+                           "It appears you can go east and north.", None)
 
 southwest_inhibitor = Room("southwest_inhibitor", "bottom_of_the_southwest stairs", "west_shopkeeper_platform",
                            "blue_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
-                           "It appears you can go west and north.")
+                           "It appears you can go west and north.", None)
 
 northeast_inhibitor = Room("northeast_inhibitor", "bottom_of_the_northeast_stairs", "east_shopkeeper_platform",
                            "purple_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
-                           "It appears you can go east and north.")
+                           "It appears you can go east and north.", None)
 
 northwest_inhibitor = Room("northwest_inhibitor", "bottom_of_the_northwest_stairs", "west_shopkeeper_platform",
                            "blue_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
-                           "It appears you can go west and north.")
+                           "It appears you can go west and north.", None)
 
 purple_nexus = Room("purple_nexus", "northeast_inhibitor", None, 'southwest_inhibitor', None, None, None, None, None,
-                    "A big purple crystal")
+                    "A big purple crystal", None)
 
 blue_nexus = Room("blue_nexus", "northwest_inhibitor", None, 'southwest_ihibitor', None, None, None, None, None,
-                  "A big blue crystal")
+                  "A big blue crystal", None)
 
 bottom_of_the_northeast_stairs = Room("bottom_of_the_northeast_stairs", "northeast_inhibitor", "northeast_jungle",
                                       "first_northeast_turrent", None, None, None, None, None,
                                       "There\'s a jungle to the south.\n"
-                                      "There appears to be a tower to the west and an inhibitor to the east.")
+                                      "There appears to be a tower to the west and an inhibitor to the east.", None)
 
 bottom_of_the_northwest_stairs = Room("bottom_of_the_northwest_stairs", "northwest_inhibitor", "northwest_jungle",
                                       "first_northwest_turrent", None, None, None, None, None,
                                       'There\'s a jungle to the south.\n' 
-                                      'There appears to be a tower to the east and an inhibitor to the west.')
+                                      'There appears to be a tower to the east and an inhibitor to the west.', None)
 
 bottom_of_the_southeast_stairs = Room("bottom_of_the_southeast_stairs", "southeast_inhibitor", "southeast_jungle",
                                       "first_southeast_turrent", None, None, None, None, None,
                                       'There\'s a jungle to the north.\n' 
-                                      'There appears to be a tower to the west and an inhibitor to the east.')
+                                      'There appears to be a tower to the west and an inhibitor to the east.', None)
 
 bottom_of_the_southwest_stairs = Room("bottom_of_the_southwest_stairs", "southwest_inhibitor", "southwest_jungle",
                                       "first_southwest_turrent", None, None, None, None, None,
                                       'There\'s a jungle to the north.\n'
-                                      'There appears to be a tower to the east and an inhibitor to the west.')
+                                      'There appears to be a tower to the east and an inhibitor to the west.', None)
 
 northeast_jungle = Room("northeast_jungle", "bottom_of_the_northeast_stairs", "east_wolves_camp",
                         "first_northeast_turrent", None, None, None, None, None, 'Brush and vines crawl on the wall.\n'
                         'There appears to be a path to the northwest.\n'
-                        'There\'s a path to the south and a path to the north.')
+                        'There\'s a path to the south and a path to the north.', None)
 
 northwest_jungle = Room("northwest_jungle", "bottom_of_the_northwest_stairs", "west_wolves_camp",
                         "first_northwest_turrent", None, None, None, None, None, 'Brush and vines crawl on the wall.\n'
                         'There appears to be a path to the northeast.\n'
-                        'There\'s a path to the south and a path to the north.')
+                        'There\'s a path to the south and a path to the north.', None)
 
 southeast_jungle = Room("southeast_jungle", "bottom_of_the_southeast_stairs", "east_wraiths_camp",
                         "first_southeast_turrent", None, None, None, None, None, 'Brush and vines crawl on the wall.\n'
                         'There appears to be a path to the southwest.\n'
-                        'There\'s a path to the north and a path to the south.')
+                        'There\'s a path to the north and a path to the south.', None)
 
 southwest_jungle = Room("southwest_jungle", "bottom_of_the_southwest_stairs", "west_wraiths_camp",
                         "first_southwest_turrent", None, None, None, None, None, 'Brush and vines crawl on the wall.\n'
                         'There appears to be a path to the southeast.\n'
-                        'There\'s a path to the north and a path to the south.')
+                        'There\'s a path to the north and a path to the south.', None)
 
 east_golem_camp = Room("east_golem_camp", "east_altar", "northeast_jungle", "first_northeast_turrent", None, None,
                        None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
-                       'There\'s a path to the south and a path to the north.')
+                       'There\'s a path to the south and a path to the north.', east_Big_Golem)
 
 west_golem_camp = Room("west_golem_camp", "west_altar", "northwest_jungle", "first_northwest_turrent", None, None,
                        None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
-                       'There\'s a path to the south and the north.')
+                       'There\'s a path to the south and the north.', west_Big_Golem)
 
 west_wolves_camp = Room("west_wolves_camp", "east-altar", None, None, None, None, None, None, None,
                         'You are met by 3 wolves, the biggest in the center.\n'
-                        'There\'s a path to the north')
+                        'There\'s a path to the north', west_Big_wolf)
 
 east_wolves_camp = Room("east_wolves_camp", "west-altar", None, None, None, None, None, None, None,
                         'You are met by 3 wolves, the biggest in the center.\n'
-                        'There\'s a path to the north')
+                        'There\'s a path to the north', east_Big_wolf)
 
 east_altar = Room("east_altar", "west_golem_camp", "first_southwest_turrent", "hp_pack", None,
-                  "second_northwest_turrent", None, "west_wolves_camp", "west_wraiths_camp", "An altar of souls.")
+                  "second_northwest_turrent", None, "west_wolves_camp", "west_wraiths_camp", "An altar of souls.", None)
 
 west_altar = Room("west_altar", "east_golem_camp", "first_southeast_turrent", "hp_pack", None,
-                  "second_northeast_turrent", None, "east_wolves_camp", "east_wraiths_camp", "An altar of souls.")
+                  "second_northeast_turrent", None, "east_wolves_camp", "east_wraiths_camp", "An altar of souls.", None)
 
 west_wraiths_camp = Room("west_wraiths_camp", "west_altar", "bottom_of_southwest_stairs", None, None, None, None, None,
-                         None, "You are met with 3 wraiths")
+                         None, "You are met with 3 wraiths", west_Big_Wraiths)
 
 east_wraiths_camp = Room("east_wraiths_camp", "east_altar", "bottom_of_southeast_stairs", None, None, None, None, None,
-                         None, "You are met with 3 wraiths")
+                         None, "You are met with 3 wraiths", east_Big_Wraiths)
 
 second_northeast_turrent = Room("second_northeast_turrent", "Vilemaw", "west_altar", "second_northwest_jungle",
-                                "first_northeast_turrent", None, None, None, None, "Its a turrent")
+                                "first_northeast_turrent", None, None, None, None, "Its a turrent", None)
 
 second_southeast_turrent = Room("second_northeast_turrent", "west_altar", "second_northwest_jungle",
-                                "first_northeast_turrent", None, None, None, None, None, "Its a turrent")
+                                "first_northeast_turrent", None, None, None, None, None, "Its a turrent", None)
 
 second_northwest_turrent = Room("second_northwest_turrent", "Vilemaw", "west_altar", "second_northwest_jungle",
-                                "first_northwest_turrent", None, None, None, None, "Its a turrent")
+                                "first_northwest_turrent", None, None, None, None, "Its a turrent", None)
 
 second_southwest_turrent = Room("second_southwest_turrent", "west_altar", "second_southeast_jungle",
-                                "first_southwest_turrent", None, None, None, None, None, "Its a turrent")
+                                "first_southwest_turrent", None, None, None, None, None, "Its a turrent", None)
 
 first_northeast_turrent = Room("first_northeast_turrent", "second_northeast_turrent", "east_jungle",
-                               "bottom_of_the_northeast_stairs", None, None, None, None, None, "Its a turrent")
+                               "bottom_of_the_northeast_stairs", None, None, None, None, None, "Its a turrent", None)
 
 first_southeast_turrent = Room("first_southeast_turrent", "second_southeast_turrent",
-                               "bottom_of_the_northeast_stairs", None, None, None, None, None, None, "Its a turrent.")
+                               "bottom_of_the_northeast_stairs", None, None, None, None, None, None, "Its a turrent.",
+                               None)
 
 first_northwest_turrent = Room("first_northwest_turrent", "second_northwest_turrent",
-                               "bottom_of_the_northeast_stairs", None, None, None, None, None, None, "Its a turrent.")
+                               "bottom_of_the_northeast_stairs", None, None, None, None, None, None, "Its a turrent.",
+                               None)
 
 first_southwest_turrent = Room("first_southwest_turrent", "second_southwest_turrent",
-                               "bottom_of_the_southwest_stairs", None, None, None, None, None, None, "Its a turrent.")
+                               "bottom_of_the_southwest_stairs", None, None, None, None, None, None, "Its a turrent.",
+                               None)
 
 Vilemaw_Room = Room("Vilemaw_Room", "second_northeast_turrent", "second_northwest_turrent", None, None, None, None,
-                    None, None, "Big monster spider lmao")
+                    None, None, "Big monster spider lmao", Vilemaw)
 
-hp_pack = Room("hp_pack", "west_altar" "east_altar", None, None, None, None, None, None, None, "Pack of hp")
+hp_pack = Room("hp_pack", "west_altar" "east_altar", None, None, None, None, None, None, None, "Pack of hp", None)
 
 
 current_node = east_shopkeeper_platform
