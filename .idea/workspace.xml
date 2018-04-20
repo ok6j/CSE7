@@ -23,7 +23,7 @@
       <file leaf-file-name="Christian R.'s - Characters.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Christian R.'s - Characters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
+            <state relative-caret-position="278">
               <caret line="47" selection-start-line="47" selection-end-line="52" selection-end-column="33" />
             </state>
           </provider>
@@ -41,8 +41,8 @@
       <file leaf-file-name="Christian R - CYOA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Christian R - CYOA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="146" column="46" selection-start-line="146" selection-start-column="46" selection-end-line="146" selection-end-column="46" />
+            <state relative-caret-position="308">
+              <caret line="177" column="30" selection-start-line="177" selection-start-column="30" selection-end-line="177" selection-end-column="30" />
               <folding>
                 <element signature="e#147#157#0" expanded="true" />
               </folding>
@@ -71,8 +71,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>shopkeep</find>
-      <find />
-      <find />
+      <find>class item</find>
+      <find>class ROom</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -102,7 +102,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="88" />
     <option name="y" value="-8" />
     <option name="width" value="1346" />
@@ -114,7 +114,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -126,6 +125,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,7 +273,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.35804418" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32755905" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32755905" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -594,13 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Christian R.'s - Characters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" selection-start-line="47" selection-end-line="52" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Class notes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -615,10 +608,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Christian R.'s - Characters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="47" selection-start-line="47" selection-end-line="52" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Christian R - CYOA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="146" column="46" selection-start-line="146" selection-start-column="46" selection-end-line="146" selection-end-column="46" />
+        <state relative-caret-position="308">
+          <caret line="177" column="30" selection-start-line="177" selection-start-column="30" selection-end-line="177" selection-end-column="30" />
           <folding>
             <element signature="e#147#157#0" expanded="true" />
           </folding>

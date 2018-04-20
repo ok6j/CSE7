@@ -29,8 +29,9 @@ class Weapon(Item):
         self.damage = damage
 
     def do_damage(self, player):
-        if self.damage:
+        if self.damage > self.defense:
             print("You did %s damage" % player.totaldamage)
+
         else:
             print("You did no damage lmao")
 
@@ -127,7 +128,7 @@ fiendish_codex = Item("Fiendish Codex", "a large glowing book", 3)
 
 
 class Characterlmao(object):
-    def __init__(self, item, description, name, hp, defense):
+    def __init__(self, item, description, name, hp, defense, weapon):
         self.name = name
         self.description = description
         self.inventory = [item]
@@ -139,6 +140,7 @@ class Characterlmao(object):
         self.fighta = False
         self.location = None  # A Room Object
         self.enemy = False
+        self.weapon = weapon
 
     def take_damage(self, amt):
             self.hp -= amt
@@ -158,11 +160,9 @@ class Characterlmao(object):
                     Enemies.do_dmg(self)
                 print('%s attacks you' % Enemies.name)
                 if self.hp <= 0:
-                    self.death = True
-                    print("you died lmao")
-                    sys.exit(0)
+                    character1.die_lol()
                 elif first_strike == self:
-                    if self.Weapon == 0:
+                    if self.weapon == 0:
                         print('You have no weapon to fight with, so you do no damage. The dinosaur easily kills you')
                     sys.exit(0)
                 else:
@@ -177,14 +177,18 @@ class Characterlmao(object):
         else:
             boost_item.heal(self)
 
-def die_lol(self, Enemies):
-    if self.hp <= 0 or self.hp == 0:
-        print("you died lmao")
+    def die_lol(self):
+        if self.hp <= 0 or self.hp == 0:
+            print("you died lmao")
+            sys.exit(0)
 
 
 class Enemies(Characterlmao):
-    def __init__(self, inventory, description, name, hp, defense):
+    def __init__(self, inventory, description, name, hp, defense, damage):
         super(Enemies, self).__init__(inventory, description, name, hp, defense)
+        Enemies.damage = damage
+        Enemies.defense = defense
+        Enemies.hp = hp
 
 
 class Vilemaw(Enemies):
@@ -196,15 +200,15 @@ class Vilemaw(Enemies):
         print('%s attacks %s' % (self.name, target.name))
 
 
-character1 = Characterlmao(None, "Black", "Jesus", 10, 12)
+character1 = Characterlmao(None, "Black", "Jesus", 10, 12, Dagger)
 print(character1.fight)
 print(character1.death)
-east_Big_wolf = Characterlmao(ClothArmor, "Big monstrous looking wolf", "Large Wolf", 14, 16)
-west_Big_wolf = Characterlmao(BFSword, "Big monstrous looking wolf", "Large Wolf", 14, 16)
-east_Big_Wraiths = Characterlmao(NullMagicMantle, "Scary looking wraith", "Big_Wraith", 13, 14)
-west_Big_Wraiths = Characterlmao(stopwatch, "Scary looking wraith", "Big_Wraith", 13, 14)
-west_Big_Golem = Characterlmao(BlastingWand, "A huge golem", "Big Golem", 13, 14)
-east_Big_Golem = Characterlmao(fiendish_codex, "A huge golem", "Big Golem", 13, 14)
+east_Big_wolf = Characterlmao(ClothArmor, "Big monstrous looking wolf", "Large Wolf", 14, 16, None)
+west_Big_wolf = Characterlmao(BFSword, "Big monstrous looking wolf", "Large Wolf", 14, 16, None)
+east_Big_Wraiths = Characterlmao(NullMagicMantle, "Scary looking wraith", "Big_Wraith", 13, 14, None)
+west_Big_Wraiths = Characterlmao(stopwatch, "Scary looking wraith", "Big_Wraith", 13, 14, None)
+west_Big_Golem = Characterlmao(BlastingWand, "A huge golem", "Big Golem", 13, 14, None)
+east_Big_Golem = Characterlmao(fiendish_codex, "A huge golem", "Big Golem", 13, 14, None)
 
 
 class Room(object):
