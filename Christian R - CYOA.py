@@ -1,3 +1,5 @@
+import sys
+import random
 # 1.Import statements
 # 2.Class Definitions
 # 3.a Items
@@ -6,8 +8,7 @@
 # 4.Instantiation of classes
 # 5. Controller
 inventory = None
-import sys
-import random
+
 
 class Item(object):
     def __init__(self, name, description, value):
@@ -28,12 +29,8 @@ class Weapon(Item):
         super(Weapon, self).__init__(name, description, value)
         self.damage = damage
 
-    def do_damage(self, player):
-        if self.damage > self.defense:
-            print("You did %s damage" % player.totaldamage)
-
-        else:
-            print("You did no damage lmao")
+    def do_damage(self, target):
+            print("You did %s damage" % target.damage)
 
 
 class Armor(Item):
@@ -90,7 +87,7 @@ class GuardianSword(Weapon):
         self.revive = revive
 
     def liveagain(self, character):
-        if character1.die_lol:
+        if character1.if_die_lol():
             if GuardianSword in inventory:
                 character.location = east_shopkeeper_platform  # Defined as a room
 
@@ -138,77 +135,61 @@ class Characterlmao(object):
         self.hp = hp
         self.defense = defense
         self.fighta = False
-        self.location = None  # A Room Object
+        self.location = location  # A Room Object
         self.enemy = False
         self.weapon = weapon
 
     def take_damage(self, amt):
             self.hp -= amt
 
-    def swing(self, target):
-        target.take_damage(self.weapon.damaged)
-        print('%s attacks %s' % (self.name, target.name))
+    def swing(self, enemies):
+        enemies.take_damage()
+        print('%s attacks %s' % (self.name, enemies.name))
 
-    def fight(self, enemy):
-        print('You engage in a fight with the %s' % enemy.name)
-        random.randit = ([Enemies], character1)
+    def fight(self, enemies, character1):
+        print('You engage in a fight with the %s' % enemies.name)
+        random.randit = ([enemies], character1)
         first_strike = random.randint
 
-        while self.hp >= 0 and Enemies.hp > 0:
-            if input("fight"):
-                if first_strike == Enemies:
-                    Enemies.do_dmg(self)
-                print('%s attacks you' % Enemies.name)
+        while self.hp > 0 and enemies.hp > 0:
+            if command == "fight":
+                if first_strike == enemies:
+                    enemies.do_dmg(self)
+                print('%s attacks you' % enemies.name)
                 if self.hp <= 0:
                     character1.die_lol()
                 elif first_strike == self:
                     if self.weapon == 0:
-                        print('You have no weapon to fight with, so you do no damage. The dinosaur easily kills you')
+                        print('You have no weapon to fight with, so you do no damage.')
                     sys.exit(0)
                 else:
-                    self.swing(Enemies)
-                    print('you attacked the %s' % Enemies.name)
-                    if Enemies.hp <= 0:
-                        print('The %s died' % Enemies.name)
+                    self.swing(enemies)
+                    print('you attacked the %s' % enemies.name)
+                    if enemies.hp <= 0:
+                        print('The %s died' % enemies.name)
 
-    def use_boost(self, boost_item):
-        if self.hp == self.max_hp:
-            print("You are already at full health.")
-        else:
-            boost_item.heal(self)
-
-    def die_lol(self):
+    def if_die_lol(self):
         if self.hp <= 0 or self.hp == 0:
             print("you died lmao")
             sys.exit(0)
 
 
-class Enemies(Characterlmao):
-    def __init__(self, inventory, description, name, hp, defense, damage):
-        super(Enemies, self).__init__(inventory, description, name, hp, defense)
-        Enemies.damage = damage
-        Enemies.defense = defense
-        Enemies.hp = hp
-
-
-class Vilemaw(Enemies):
-    def __init__(Enemies):
-        super(Vilemaw, Enemies).__init__(ZzRotPortal, "Big spider boss looms over you", "Vilemaw", 100, 100)
-
-    def swing(self, target):
-        target.take_damage()
-        print('%s attacks %s' % (self.name, target.name))
+class enemies(Characterlmao):
+    def __init__(self, item, description, name, defense, damage, location):
+        super(enemies, self).__init__(item, description, name, Weapon, defense, damage)
+        self.location = location
 
 
 character1 = Characterlmao(None, "Black", "Jesus", 10, 12, Dagger)
 print(character1.fight)
 print(character1.death)
-east_Big_wolf = Characterlmao(ClothArmor, "Big monstrous looking wolf", "Large Wolf", 14, 16, None)
-west_Big_wolf = Characterlmao(BFSword, "Big monstrous looking wolf", "Large Wolf", 14, 16, None)
-east_Big_Wraiths = Characterlmao(NullMagicMantle, "Scary looking wraith", "Big_Wraith", 13, 14, None)
-west_Big_Wraiths = Characterlmao(stopwatch, "Scary looking wraith", "Big_Wraith", 13, 14, None)
-west_Big_Golem = Characterlmao(BlastingWand, "A huge golem", "Big Golem", 13, 14, None)
-east_Big_Golem = Characterlmao(fiendish_codex, "A huge golem", "Big Golem", 13, 14, None)
+east_Big_wolf = enemies(ClothArmor, "Big monstrous looking wolf", "Large Wolf", 14, 16, east_wolves_camp)
+west_Big_wolf = enemies(BFSword, "Big monstrous looking wolf", "Large Wolf", 14, 16, )
+east_Big_Wraiths = enemies(NullMagicMantle, "Scary looking wraith", "Big_Wraith", 13, 14)
+west_Big_Wraiths = enemies(stopwatch, "Scary looking wraith", "Big_Wraith", 13, 14)
+west_Big_Golem = enemies(BlastingWand, "A huge golem", "Big Golem", 13, 14)
+east_Big_Golem = enemies(fiendish_codex, "A huge golem", "Big Golem", 13, 14)
+Vilemaw = enemies(ZzRotPortal, "Monstrous spider looking creature looms over you", "Vilemaw", 100, 100)
 
 
 class Room(object):
