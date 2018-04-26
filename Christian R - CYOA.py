@@ -61,26 +61,6 @@ class HpBoosts(Item):
         character.hp += self.healing
 
 
-class Dagger(Weapon):
-    def __init__(self):
-        super(Dagger, self).__init__("Dagger", "Its a dagger", "Nothing, like you", 1)
-
-
-class LongSword(Weapon):
-    def __init__(self):
-        super(LongSword, self).__init__("Long Sword", "Its a long boi", "350 gold", 56)
-
-
-class BlastingWand(Weapon):
-    def __init__(self):
-        super(BlastingWand, self).__init__("Blasting Wand", "Its a wand", "32 gold", 32)
-
-
-class BFSword(Weapon):
-    def __init__(self):
-        super(BFSword, self).__init__("B.F. Sword", "It's a big sword lmao", "43 gold", 32)
-
-
 class GuardianSword(Weapon):
     def __init__(self, revive):
         super(GuardianSword, self).__init__("Guardian Sword", "Its shiny and sharp", "200 gold", 100)
@@ -90,16 +70,6 @@ class GuardianSword(Weapon):
         if character1.if_die_lol():
             if GuardianSword in inventory:
                 character.location = east_shopkeeper_platform  # Defined as a room
-
-
-class ClothArmor(Armor):
-    def __init__(self):
-        super(ClothArmor, self).__init__("Cloth Armor", "Its clothy and stuff", "nothing", 2.5)
-
-
-class NullMagicMantle(Armor):
-    def __init__(self):
-        super(NullMagicMantle, self).__init__("Null_Magic_Mantle", "It's a metal skirt", "2", 17)
 
 
 class BansheesVeil(Armor):
@@ -122,7 +92,12 @@ class ZzRotPortal(Item):
 
 stopwatch = Item("stopwatch", "Its a broken stopwatch", 1)
 fiendish_codex = Item("Fiendish Codex", "a large glowing book", 3)
-
+nullmagicmantle = Armor("Null Magic Mantle", "It's a metal skirt", 2, 2)
+clotharmor = Armor("Cloth Armor", "Its clothy and stuff", 0, 1)
+bfsword = Weapon("B.F. Sword", "It's a big sword lmao", 43, 32)
+blsstingwand = Weapon("Blasting Wand", "Its a wand", 32, 32)
+longsword = Weapon("Long Sword", "Its a long boi", 350, 12)
+dagger = Weapon("Dagger", "Its a dagger", 1, 1)
 
 class Characterlmao(object):
     def __init__(self, item, description, name, hp, defense, weapon):
@@ -179,15 +154,14 @@ class enemies(Characterlmao):
         super(enemies, self).__init__(item, description, name, Weapon, defense, damage)
         self.location = location
 
-
-character1 = Characterlmao(None, "Black", "Jesus", 10, 12, Dagger)
+character1 = Characterlmao(None, "Black", "Jesus", 10, 12, dagger, )
 print(character1.fight)
 print(character1.death)
-east_Big_wolf = enemies(ClothArmor, "Big monstrous looking wolf", "Large Wolf", 14, 16, east_wolves_camp)
-west_Big_wolf = enemies(BFSword, "Big monstrous looking wolf", "Large Wolf", 14, 16, )
-east_Big_Wraiths = enemies(NullMagicMantle, "Scary looking wraith", "Big_Wraith", 13, 14)
+east_Big_wolf = enemies(clotharmor, "Big monstrous looking wolf", "Large Wolf", 14, 16, east_wolves_camp)
+west_Big_wolf = enemies(bfsword, "Big monstrous looking wolf", "Large Wolf", 14, 16)
+east_Big_Wraiths = enemies(nullmagicmantle, "Scary looking wraith", "Big_Wraith", 13, 14)
 west_Big_Wraiths = enemies(stopwatch, "Scary looking wraith", "Big_Wraith", 13, 14)
-west_Big_Golem = enemies(BlastingWand, "A huge golem", "Big Golem", 13, 14)
+west_Big_Golem = enemies(blsstingwand, "A huge golem", "Big Golem", 13, 14)
 east_Big_Golem = enemies(fiendish_codex, "A huge golem", "Big Golem", 13, 14)
 Vilemaw = enemies(ZzRotPortal, "Monstrous spider looking creature looms over you", "Vilemaw", 100, 100)
 
