@@ -1,193 +1,195 @@
-import sys
+
 import random
-# 1.Import statements
-# 2.Class Definitions
-# 3.a Items
-# 3.b Characters
-# 3.c Rooms
-# 4.Instantiation of classes
-# 5. Controller
-inventory = None
 
 
 class Item(object):
-    def __init__(self, name, description, value):
+    def __init__(self, name, money):
         self.name = name
-        self.description = description
-        self.used = False
-        self.value = value
-
-    def use(self):
-        if self.used:
-            print("usable")
-        else:
-            self.used = True
+        self.money = money
 
 
 class Weapon(Item):
-    def __init__(self, name, description, value, damage):
-        super(Weapon, self).__init__(name, description, value)
+    def __init__(self, name, money, damage, description):
+        super(Weapon, self).__init__(name, money)
         self.damage = damage
+        self.description = description
 
-    def do_damage(self, target):
-            print("You did %s damage" % target.damage)
+
+class Consumable(Item):
+    def __init__(self, heal, name, money):
+        super(Consumable, self).__init__(name, money)
+        self.heal = heal
+
+    def heal(self):
+        if Hppack in your_inv:
+            print("You drink a %s" % self.name)
+            self.heal += you.health
+        else:
+            print("You don't have any consumables.")
 
 
 class Armor(Item):
-    def __init__(self, name, description, value, defense):
-        super(Armor, self).__init__(name, description, value)
-        self.defense = defense
+    def __init__(self, name, health, money):
+        super(Armor, self).__init__(name, money)
+        self.health = health
 
 
-class Boosts(Item):
-    def __init__(self, buff):
-        super(Boosts, self).__init__(self.name, self.description, self.value)
-        self.buff = buff
-
-    def buffed(self):
-        if self.buff:
-            print("You are buffed with %s" % self.buff.name)
-
-        else:
-            print("You are not buffed")
+class Dagger(Weapon):
+    def __init__(self, name, money, damage, description):
+        super(Dagger, self).__init__(name, money, damage, description)
 
 
-class HpBoosts(Item):
-    def __init__(self, healing):
-        super(HpBoosts, self).__init__("Hp boost", "Its a green cross and its glowing", "Nothing")
-        self.healing = healing
+class Longsword(Weapon):
+    def __init__(self, name, money, damage, description):
+        super(Longsword, self).__init__(name, money, damage, description)
 
-    def heal(self, character):
-        character.hp += self.healing
+
+class BlastingWand(Weapon):
+    def __init__(self, name, money, damage, description):
+        super(BlastingWand, self).__init__(name, money, damage, description)
+
+
+class BFsword(Weapon):
+    def __init__(self, name, money, damage, description):
+        super(BFsword, self).__init__(name, money, damage, description)
 
 
 class GuardianSword(Weapon):
-    def __init__(self, revive):
-        super(GuardianSword, self).__init__("Guardian Sword", "Its shiny and sharp", "200 gold", 100)
-        self.revive = revive
+    def __init__(self, name, money, damage, description):
+        super(GuardianSword, self).__init__(name, money, damage, description)
 
-    def liveagain(self, character):
-        if character1.if_die_lol():
-            if GuardianSword in inventory:
-                character.location = east_shopkeeper_platform  # Defined as a room
+
+class Hppack(Consumable):
+    def __init__(self, heal, name, money):
+        super(Hppack, self).__init__(heal, name, money)
+
+
+class NullMagicMantle(Armor):
+    def __init__(self, name, health, money):
+        super(NullMagicMantle, self).__init__(name, health, money)
 
 
 class BansheesVeil(Armor):
-    def __init__(self, block):
-        super(BansheesVeil, self).__init__("Bnashees_Veil", "It's a necklace", "300 gold", 100)
-        self.block = block
+    def __init__(self, name, health, money):
+        super(BansheesVeil, self).__init__(name, health, money)
 
-    def passive(self):
-        if self.block:
-            print("A shield surrounds you and blocks all damage")
-            Vilemaw.totaldamage = 0
-        else:
-            print()
 
+class ClothArmor(Armor):
+    def __init__(self, name, health, money):
+        super(ClothArmor, self).__init__(name, health, money)
 
 class ZzRotPortal(Item):
-    def __init__(self):
-        super(ZzRotPortal, self).__init__("Zz'Rot Portal", "A rock encrusted void", 350)
-
-
-stopwatch = Item("stopwatch", "Its a broken stopwatch", 1)
-fiendish_codex = Item("Fiendish Codex", "a large glowing book", 3)
-nullmagicmantle = Armor("Null Magic Mantle", "It's a metal skirt", 2, 2)
-clotharmor = Armor("Cloth Armor", "Its clothy and stuff", 0, 1)
-bfsword = Weapon("B.F. Sword", "It's a big sword lmao", 43, 32)
-blsstingwand = Weapon("Blasting Wand", "Its a wand", 32, 32)
-longsword = Weapon("Long Sword", "Its a long boi", 350, 12)
-dagger = Weapon("Dagger", "Its a dagger", 1, 1)
-
-class Characterlmao(object):
-    def __init__(self, item, description, name, hp, defense, weapon):
-        self.name = name
+    def __init__(self, name, money, description):
+        super(ZzRotPortal, self).__init__(name, money)
         self.description = description
-        self.inventory = [item]
-        self.death = False
-        self.max_hp = 100
-        self.max_defense = 100
-        self.hp = hp
-        self.defense = defense
-        self.fighta = False
-        self.location = location  # A Room Object
-        self.enemy = False
-        self.weapon = weapon
 
-    def take_damage(self, amt):
-            self.hp -= amt
+class Stopwatch(Item):
+    def __init__(self, name, money, description):
+        super(Stopwatch, self).__init__(name, money)
+        self.description = description
 
-    def swing(self, enemies):
-        enemies.take_damage()
-        print('%s attacks %s' % (self.name, enemies.name))
-
-    def fight(self, enemies, character1):
-        print('You engage in a fight with the %s' % enemies.name)
-        random.randit = ([enemies], character1)
-        first_strike = random.randint
-
-        while self.hp > 0 and enemies.hp > 0:
-            if command == "fight":
-                if first_strike == enemies:
-                    enemies.do_dmg(self)
-                print('%s attacks you' % enemies.name)
-                if self.hp <= 0:
-                    character1.die_lol()
-                elif first_strike == self:
-                    if self.weapon == 0:
-                        print('You have no weapon to fight with, so you do no damage.')
-                    sys.exit(0)
-                else:
-                    self.swing(enemies)
-                    print('you attacked the %s' % enemies.name)
-                    if enemies.hp <= 0:
-                        print('The %s died' % enemies.name)
-
-    def if_die_lol(self):
-        if self.hp <= 0 or self.hp == 0:
-            print("you died lmao")
-            sys.exit(0)
+stopwatch = Stopwatch("Stopwatch", 0, "A broken stopwatch")
+zzrotportal = ZzRotPortal("Zz'Rot Portal", "???", "A portal filled with nothingness.")
+dagger = Dagger("Dagger", 1, 1, "A small dagger")
+longsword = Longsword("Long Sword", 45, 100, "A long sword.")
+blastingwand = BlastingWand("Blasting Wand", 15, 45, "It's a long spiked wand.")
+bfsword = BFsword("B.F. Sword", 15, 15, "It's a blue tinted sword.")
+guardiansword = GuardianSword("Guardian Sword", 200, 1000, "A sword with the feeling of life swarming it.")
+hp_pack = Hppack(50, "Hp pack", 0)
+nullmagicmantle = NullMagicMantle("Null Magic Mantle", 15, 10)
+bansheesveil = BansheesVeil("Banshees Veil", 100, 400)
+clotharmor = ClothArmor("Cloth Armor", 3, 1)
 
 
-class enemies(Characterlmao):
-    def __init__(self, item, description, name, defense, damage, location):
-        super(enemies, self).__init__(item, description, name, Weapon, defense, damage)
-        self.location = location
 
-character1 = Characterlmao(None, "Black", "Jesus", 10, 12, dagger, )
-print(character1.fight)
-print(character1.death)
-east_Big_wolf = enemies(clotharmor, "Big monstrous looking wolf", "Large Wolf", 14, 16, east_wolves_camp)
-west_Big_wolf = enemies(bfsword, "Big monstrous looking wolf", "Large Wolf", 14, 16)
-east_Big_Wraiths = enemies(nullmagicmantle, "Scary looking wraith", "Big_Wraith", 13, 14)
-west_Big_Wraiths = enemies(stopwatch, "Scary looking wraith", "Big_Wraith", 13, 14)
-west_Big_Golem = enemies(blsstingwand, "A huge golem", "Big Golem", 13, 14)
-east_Big_Golem = enemies(fiendish_codex, "A huge golem", "Big Golem", 13, 14)
-Vilemaw = enemies(ZzRotPortal, "Monstrous spider looking creature looms over you", "Vilemaw", 100, 100)
+class Character(object):
+    def __init__(self, name, health, description, attack, money, inventory):
+        self.name = name
+        self.health = health
+        self.description = description
+        self.attack = attack
+        self.money = money
+        self.inventory = inventory
+
+    def take_damage(self, amount):
+        self.health -= amount
+
+    def hit(self, target):
+        target.take_damage(self.attack)
+        print('%s attacks %s for %s' % (self.name, target.name, self.attack))
+        if you.health <= 0:
+            print('You died.')
+            exit(0)
+        if target.health <= 0:
+            print('%s died.' % target.name)
+            print('You received %s gold.' % target.money)
+            print('HP: %s' % you.health)
+            self.money += target.money
+            if target.health < 0:
+                target.health = 0
+            # Loot
+            choice = random.randint(1, 20)
+            loot = random.randint(1, 20)
+            if choice == loot:
+                your_inv.append(target.inventory)
+
+    def fight(self, enemy):
+        try:
+            if enemy == current_node.enemy_in:
+                print(you.name + ",", you.description, "starts fighting with %s" % enemy.name + ",", enemy.description)
+                enemy.health = enemy.orig_hp
+                while enemy.health != 0:
+                    choice = random.choice([enemy, self])
+                    if choice == self:
+                        enemy.hit(self)
+                        if you.health > max_hp:
+                            you.health = max_hp
+                    elif choice == enemy:
+                        self.hit(enemy)
+                        enemy.health += enemy.lifesteal
+                print()
+        except AttributeError:
+            print("There's no enemy here.")
+
+
+class Enemy(Character):
+    def __init__(self, name, health, description, attack, inventory):
+        super(Enemy, self).__init__(name, health, description, attack, inventory)
 
 
 class Room(object):
-    def __init__(self, name, north, south, west, east, northeast, northwest, southeast, southwest, description,
-                 enemies):
+    def __init__(self, name, south, west, east, north, southwest, northeast, southeast, northwest, description,
+                 enemy_in):
         self.name = name
-        self.north = north
-        self.east = east
         self.south = south
         self.west = west
-        self.northeast = northeast
-        self.northwest = northwest
-        self.southeast = southeast
+        self.east = east
+        self.north = north
         self.southwest = southwest
+        self.northeast = northeast
+        self.southeast = southeast
+        self.northwest = northwest
         self.description = description
-        self.enemies = enemies
+        self.enemy_in = enemy_in
 
     def move(self, direction):
         global current_node
         current_node = globals()[getattr(self, direction)]
 
 
-# west_house = Room("West of House", 'north_house')
-# north_house = Room("North of House", None)
+
+
+your_inv = []
+max_hp = 100
+you = Character("", 100, "", 10, 0, your_inv)
+east_Big_wolf = Enemy("East Big Wolf", 15, "A big menacing wolf", 15, clotharmor)
+west_Big_wolf = Enemy("West Big Wolf", 25, "A big menacing wolf", 25,  bfsword)
+east_Big_Wraiths = Enemy("East Big Wraith", 15, "Scary looking wraith", 15, nullmagicmantle)
+west_Big_Wraiths = Enemy("West Big Wraith", 20, "Scary looking wraith", 10, sto)
+west_Big_Golem = Enemy(blsstingwand, "A huge golem", "Big Golem", 13, 14)
+east_Big_Golem = Enemy(fiendish_codex, "A huge golem", "Big Golem", 13, 14)
+Vilemaw = Enemy(ZzRotPortal, "Monstrous spider looking creature looms over you", "Vilemaw", 100, 100)
+
 
 east_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', 'southeast_inhibitor', None, None, None,
                                 None, None, None, 'You are on a shopkeeper platform, he appears ecstatic.\n'
@@ -317,29 +319,160 @@ first_southwest_turrent = Room("first_southwest_turrent", "second_southwest_turr
 Vilemaw_Room = Room("Vilemaw_Room", "second_northeast_turrent", "second_northwest_turrent", None, None, None, None,
                     None, None, "Big monster spider lmao", Vilemaw)
 
-hp_pack = Room("hp_pack", "west_altar" "east_altar", None, None, None, None, None, None, None, "Pack of hp", None)
-
+hp_room = Room("Hp Room", "west_altar" "east_altar", None, None, None, None, None, None, None, "Pack of hp", None)
 
 current_node = east_shopkeeper_platform
-directions = ['north', 'south', 'northeast', 'east', 'southeast', 'west', 'southwest', 'northwest']
-short_directions = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw']
+directions = ['southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast']
+short_directions = ['se', 'nw', 's', 'w', 'e', 'n', 'sw', 'ne']
+all_the_commands = ['buy', 'southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast',
+                    'se', 'nw', 's', 'w', 'e', 'n', 'sw', 'ne', 'hp', 'money', 'help', 'inv', 'fight', 'stats', 'me',
+                    'sell', 'buy', 'heal']
+
+character_name = input('What do you want to be named?\n>_')
+you.name = character_name
+character_description = input('How would you describe yourself?\na:')
+you.description = ('a' + ' ' + character_description)
 
 while True:
     print(current_node.name)
     print(current_node.description)
-    command = input('>_').lower().strip()
+
+    command = input('>_ ').lower().strip()
+
+    if command == 'heal':
+        if hp_pack in your_inv:
+            if you.health == max_hp:
+                print("You are already full hp.")
+            if you.health < max_hp:
+                print("You drink a health potion.")
+                you.health += hp_pack.heal
+                if you.health > max_hp:
+                    you.health = max_hp
+            print('HP: %s' % you.health)
+        else:
+            "You don\'t have a health potion."
+        if hp_pack not in your_inv:
+            print("You don\'t have a health potion.")
+
+    if command == 'hp':
+        print(str(you.health)+'/'+str(max_hp))
+
+    if command == 'stats':
+        print('-------------------------------')
+        print('MAX HP' + ' - ' + str(max_hp))
+        print('ATT' + ' - ' + str(you.attack))
+        print('-------------------------------')
+
+    if command == 'me':
+        print('-------------------------------')
+        print(you.name)
+        print(you.description)
+        print('-------------------------------')
+
+    if command == 'buy':
+        armor_shop = [bansheesveil]
+        weapon_shop = [longsword, guardiansword]
+        shop = [bansheesveil, longsword, guardiansword]
+
+        if current_node == spawn_n:
+            print("---SHOP---"
+                  "\nBANSHEES VEIL(0)------ 400G"
+                  "\nLONG SWORD(1)---------- 20G"
+                  "\nGUARDIAN SWORD(2)-------- 200G"
+                  "\n----------")
+            item_buying = input("What do you want to buy? (Type in the number)\nYOUR MONEY: %s\n>_" % you.money)
+            try:
+                item_buy = shop[int(item_buying)]
+                if you.money < item_buy.money:
+                    print("You're poor.")
+                if you.money >= item_buy.money:
+                    print("You buy a %s." % item_buy.name)
+                    your_inv.append(item_buy)
+                    you.money -= item_buy.money
+                    if item_buy in armor_shop:
+                        max_hp += item_buy.health
+                    if item_buy in weapon_shop:
+                        you.attack += item_buy.damage
+            except ValueError:
+                print("That is not an item.")
+        elif current_node != spawn_n:
+            print('You are at the shopkeeper platform.')
+
+    if command == 'sell':
+        armor_shop = [clotharmor, bansheesveil, nullmagicmantle]
+        weapon_shop = [bfsword, blastingwand, guardiansword, longsword, dagger]
+        shop = [clotharmor, bansheesveil, nullmagicmantle, bfsword, blastingwand, guardiansword, longsword, dagger,
+                hp_pack]
+
+        if current_node == spawn_n:
+            for i in your_inv:
+                print('YOUR INV:')
+                print('[ ' + i.name + ' ]')
+            if len(your_inv) == 0:
+                print([])
+            print("\nCLOTH ARMOR(0)"
+                  "\nBANSHEES VEIL(1)"
+                  "\nNULL MAGIC MANTLE(2)"
+                  "\nB.F. SWORD(3)"
+                  "\nBLASTING WAND(4)"
+                  "\nGUARDIAN SWORD(5)"
+                  "\nLONG SWORD(6)"
+                  "\nDAGGER(7)"
+                  "\nHP PACK(8)"
+                  "\n----------")
+            selling = input('What do you want to sell?')
+            try:
+                sold = shop[int(selling)]
+                if sold not in your_inv:
+                    print('You don\'t have this in your inventory.')
+                if sold in your_inv:
+                    print('You sell a %s.' % sold.name)
+                    you.money += sold.money
+                    your_inv.remove(sold)
+                    you.money += sold.money
+                    if sold in armor_shop:
+                        max_hp -= sold.health
+                    if sold in weapon_shop:
+                        you.attack -= sold.damage
+            except ValueError:
+                print('That is not an option.')
+
     if command == 'quit':
-        quit(0)
-    elif command in short_directions:
-        location = short_directions.index(command)
-        command = directions[location]
+        exit(0)
+
+    if command in short_directions:
+        # Finds the command in short directions (index number)
+        pos = short_directions.index(command)
+        command = directions[pos]
+
+    if command == 'money':
+        print(you.money)
+
+    if command == 'help':
+        print("Type 'southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast', 'se', 'nw', "
+              "'s', 'w', 'e', 'n', 'sw', 'ne' to move.")
+
+    if command == 'inv':
+        for i in your_inv:
+            print('[ ' + i.name + ' ]')
+        if len(your_inv) == 0:
+            print([])
+
+    if command == 'fight':
+        you.fight(current_node.enemy_in)
+
+    if current_node == ZzRotPortal_Room:
+        print("The void consumes you, you become Vilemaw")
+        exit(0)
+
     if command in directions:
         try:
             current_node.move(command)
         except KeyError:
-            print('You can\'t go this way')
-    else:
-        print('command not recognized')
-    if current_node == ZzRotPortal:
-        print("The void consumes you, you become Vilemaw")
-        exit(0)
+            print("You cannot go that way.")
+    elif command not in all_the_commands:
+        print("Command not found.")
+
+    print("---------------------------------------------------------------------------------------------------------"
+          "-----------------------------------------")
+    print()
