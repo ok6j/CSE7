@@ -50,8 +50,8 @@
       <file leaf-file-name="Christian R - CYOA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Christian R - CYOA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="159" column="104" selection-start-line="159" selection-start-column="104" selection-end-line="159" selection-end-column="104" />
+            <state relative-caret-position="125">
+              <caret line="470" column="40" lean-forward="true" selection-start-line="470" selection-start-column="40" selection-end-line="470" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -273,7 +273,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24304539" />
@@ -595,13 +595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Christian Rivera - Dictionary World Map.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="184" column="29" selection-start-line="184" selection-start-column="29" selection-end-line="184" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kamisama.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -623,10 +616,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Christian Rivera - Dictionary World Map.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3128">
+          <caret line="184" column="29" selection-start-line="184" selection-start-column="29" selection-end-line="184" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Christian R - CYOA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="159" column="104" selection-start-line="159" selection-start-column="104" selection-end-line="159" selection-end-column="104" />
+        <state relative-caret-position="125">
+          <caret line="470" column="40" lean-forward="true" selection-start-line="470" selection-start-column="40" selection-end-line="470" selection-end-column="40" />
         </state>
       </provider>
     </entry>
