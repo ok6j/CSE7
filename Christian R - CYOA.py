@@ -155,7 +155,6 @@ class Character(object):
                             you.health = max_hp
                     elif choice == enemy:
                         self.hit(enemy)
-                        enemy.health += enemy.lifesteal
                 print()
         except AttributeError:
             print("There's no enemy here.")
@@ -200,11 +199,11 @@ Vilemaw = Enemy('Vilemaw', 100, "A monsterous creature looms over you", 100, ZzR
 
 east_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', 'southeast_inhibitor', None, None, None,
                                 None, None, None, 'You are on a shopkeeper platform, he appears ecstatic.\n'
-                                'There\'s two staircases one leading south and one leading north.', None)
+                                'There\'s two staircases one leading south and one leading west.', None)
 
 west_shopkeeper_platform = Room("Shopkeeper Platform", 'northeast_inhibitor', 'southeast_inhibitor', None, None, None,
                                 None, None, None, 'You are on a shopkeeper platform, he appears ecstatic.\n'
-                                'There\'s two staircases one leading south and one leading north.', None)
+                                'There\'s two staircases one leading south and one leading west.', None)
 
 southeast_inhibitor = Room("Southeast Inhibitor", "bottom_of_the_southeast stairs", "east_shopkeeper_platform",
                            "purple_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
@@ -216,17 +215,17 @@ southwest_inhibitor = Room("Southwest Inhibitor", "bottom_of_the_southwest stair
 
 northeast_inhibitor = Room("Northeast Inhibitor", "bottom_of_the_northeast_stairs", "east_shopkeeper_platform",
                            "purple_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
-                           "It appears you can go east and north.", None)
+                           "It appears you can go south, west, and east.", None)
 
 northwest_inhibitor = Room("Northwest Inhibitor", "bottom_of_the_northwest_stairs", "west_shopkeeper_platform",
                            "blue_nexus", None, None, None, None, None, "You are next to a giant crystal.\n" 
                            "It appears you can go west and north.", None)
 
 purple_nexus = Room("Purple Nexus", "northeast_inhibitor", None, 'southwest_inhibitor', None, None, None, None, None,
-                    "A big purple crystal", None)
+                    "A big purple crystal, it appears you can go south and east.", None)
 
 blue_nexus = Room("Blue nexus", "northwest_inhibitor", None, 'southwest_ihibitor', None, None, None, None, None,
-                  "A big blue crystal", None)
+                  "A big blue crystal, you can go south and east", None)
 
 bottom_of_the_northeast_stairs = Room("Bottom of the Northeast Stairs", "northeast_inhibitor", "northeast_jungle",
                                       "first_northeast_turrent", None, None, None, None, None,
@@ -327,6 +326,8 @@ Vilemaw_Room = Room("Vilemaw Room", "second_northeast_turrent", "second_northwes
                     None, None, "Big monster spider lmao", Vilemaw)
 
 hp_room = Room("Hp Room", "west_altar" "east_altar", None, None, None, None, None, None, None, "Pack of hp", None)
+
+ZzRotPortal_Room = Room("Portal Room", None, None, None, None, None, None, None, None, "A dark nothingness.", you)
 
 current_node = east_shopkeeper_platform
 directions = ['southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast']
@@ -471,7 +472,7 @@ while True:
         you.fight(current_node.enemy_in)
 
     if command == 'shrek':
-        print("you win!!!")
+        print("You become vilemaw.")
         exit(0)
 
     if command in directions:
