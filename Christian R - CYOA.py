@@ -1,4 +1,5 @@
 import random
+import webbrowser
 
 
 class Item(object):
@@ -269,65 +270,76 @@ southwest_jungle = Room("Southwest Jungle", "bottom_of_the_southwest_stairs", "w
 
 east_golem_camp = Room("East Golem Camp", "east_altar", "northeast_jungle", "first_northeast_turrent", None, None,
                        None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
-                       'There\'s a path to the south and a path to the north.', east_Big_Golem)
+                       'There\'s a path to the south and a path to the east.', east_Big_Golem)
 
 west_golem_camp = Room("West Golem Camp", "west_altar", "northwest_jungle", "first_northwest_turrent", None, None,
                        None, None, None, 'You are met by 2 golems,one looking bigger than the other.\n'
-                       'There\'s a path to the south and the north.', west_Big_Golem)
+                       'There\'s a path to the south and the east.', west_Big_Golem)
 
 west_wolves_camp = Room("West Wolves Camp", "east-altar", None, None, None, None, None, None, None,
                         'You are met by 3 wolves, the biggest in the center.\n'
-                        'There\'s a path to the north', west_Big_wolf)
+                        'There\'s a path to the south.', west_Big_wolf)
 
 east_wolves_camp = Room("East Wolves Camp", "west-altar", None, None, None, None, None, None, None,
                         'You are met by 3 wolves, the biggest in the center.\n'
-                        'There\'s a path to the north', east_Big_wolf)
+                        'There\'s a path to the south.', east_Big_wolf)
 
 east_altar = Room("East Altar", "west_golem_camp", "first_southwest_turrent", "hp_pack", None,
-                  "second_northwest_turrent", None, "west_wolves_camp", "west_wraiths_camp", "An altar of souls.", None)
+                  "second_northwest_turrent", None, "west_wolves_camp", "west_wraiths_camp", "An altar of souls.\n"
+                  "There\'s a path to the south, west, and east.", None)
 
 west_altar = Room("West Altar", "east_golem_camp", "first_southeast_turrent", "hp_pack", None,
-                  "second_northeast_turrent", None, "east_wolves_camp", "east_wraiths_camp", "An altar of souls.", None)
+                  "second_northeast_turrent", None, "east_wolves_camp", "east_wraiths_camp", "An altar of souls.\n"
+                  "There\'s a path to the south, west, and east.", None)
 
 west_wraiths_camp = Room("West Wraiths Camp", "west_altar", "bottom_of_southwest_stairs", None, None, None, None, None,
-                         None, "You are met with 3 wraiths", west_Big_Wraiths)
+                         None, "You are met with 3 wraiths.\n" "There\'s a path to the south and west",
+                         west_Big_Wraiths)
 
 east_wraiths_camp = Room("East Wraiths Camp", "east_altar", "bottom_of_southeast_stairs", None, None, None, None, None,
-                         None, "You are met with 3 wraiths", east_Big_Wraiths)
+                         None, "You are met with 3 wraiths.\n" "There\'s a path to the south and west",
+                         east_Big_Wraiths)
 
 second_northeast_turrent = Room("Second Northeast Turrent", "Vilemaw", "west_altar", "second_northwest_jungle",
-                                "first_northeast_turrent", None, None, None, None, "Its a turrent", None)
+                                "first_northeast_turrent", None, None, None, None, "Its a turrent\n" 
+                                "You can go north, east, west, and south.", None)
 
 second_southeast_turrent = Room("Second Northeast Turrent", "west_altar", "second_northwest_jungle",
-                                "first_northeast_turrent", None, None, None, None, None, "Its a turrent", None)
+                                "first_northeast_turrent", None, None, None, None, None, "Its a turrent\n"
+                                "You can go north, east, west, and south.", None)
 
 second_northwest_turrent = Room("Second Northwest Turrent", "Vilemaw", "west_altar", "second_northwest_jungle",
-                                "first_northwest_turrent", None, None, None, None, "Its a turrent", None)
+                                "first_northwest_turrent", None, None, None, None, "Its a turrent\n"
+                                "You can go north, east, west, and south.", None)
 
 second_southwest_turrent = Room("Second Southwest Turrent", "west_altar", "second_southeast_jungle",
-                                "first_southwest_turrent", None, None, None, None, None, "Its a turrent", None)
+                                "first_southwest_turrent", None, None, None, None, None, "Its a turrent\n"
+                                "You can go north, east, west, and south.", None)
 
 first_northeast_turrent = Room("First Northeast Turrent", "second_northeast_turrent", "east_jungle",
-                               "bottom_of_the_northeast_stairs", None, None, None, None, None, "Its a turrent", None)
+                               "bottom_of_the_northeast_stairs", None, None, None, None, None, "Its a turrent\n"
+                               "You can go north, east, west, and south.", None)
 
 first_southeast_turrent = Room("First Southeast Turrent", "second_southeast_turrent",
-                               "bottom_of_the_northeast_stairs", None, None, None, None, None, None, "Its a turrent.",
-                               None)
+                               "bottom_of_the_northeast_stairs", None, None, None, None, None, None, "Its a turrent.\n"
+                               "You can go north, east, west, and south.", None)
 
 first_northwest_turrent = Room("First Northwest Turrent", "second_northwest_turrent",
-                               "bottom_of_the_northeast_stairs", None, None, None, None, None, None, "Its a turrent.",
-                               None)
+                               "bottom_of_the_northeast_stairs", None, None, None, None, None, None, "Its a turrent.\n"
+                               "You can go north, east, west, and south.", None)
 
 first_southwest_turrent = Room("First Southwest Turrent", "second_southwest_turrent",
-                               "bottom_of_the_southwest_stairs", None, None, None, None, None, None, "Its a turrent.",
-                               None)
+                               "bottom_of_the_southwest_stairs", None, None, None, None, None, None, "Its a turrent.\n"
+                               "You can go north, east, west, and south.", None)
 
 Vilemaw_Room = Room("Vilemaw Room", "second_northeast_turrent", "second_northwest_turrent", None, None, None, None,
                     None, None, "Big monster spider lmao", Vilemaw)
 
-hp_room = Room("Hp Room", "west_altar" "east_altar", None, None, None, None, None, None, None, "Pack of hp", None)
+hp_room = Room("Hp Room", "west_altar", "east_altar", None, None, None, None, None, None, "Pack of hp\n" 
+               "You can go south and west", None)
 
-ZzRotPortal_Room = Room("Portal Room", None, None, None, None, None, None, None, None, "A dark nothingness.", you)
+ZzRotPortal_Room = Room("Portal Room", None, None, None, None, None, None, None, None, "A dark nothingness.\n"
+                        "You can go nowhere.", you)
 
 current_node = east_shopkeeper_platform
 directions = ['southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast']
@@ -344,8 +356,11 @@ you.description = character_description
 while True:
     print(current_node.name)
     print(current_node.description)
+    print('For info type help.')
 
     command = input('>_ ').lower().strip()
+
+    # if command == 'help' and  '?' and ''
 
     if command == 'heal':
         if hp_pack in your_inv:
@@ -448,19 +463,25 @@ while True:
                 print('That is not an option.')
 
     if command == 'quit':
-        exit(0)
+        quit()
 
     if command in short_directions:
         # Finds the command in short directions (index number)
         pos = short_directions.index(command)
         command = directions[pos]
 
+    if command == 'snap':
+        webbrowser.open_new('https://www.youtube.com/watch?v=iqOas9MCVhc')
+        print("Hey %s, I don't feel so good..." % you.name)
+
+        quit()
+
     if command == 'money':
         print(you.money)
 
     if command == 'help':
         print("Type 'southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast', 'se', 'nw', "
-              "'s', 'w', 'e', 'n', 'sw', 'ne' to move.")
+              "'s', 'w', 'e', 'n', 'sw', 'ne' to move and fight to fight, inv for inv, and quit to exit the game.")
 
     if command == 'inv':
         for i in your_inv:
@@ -473,7 +494,8 @@ while True:
 
     if command == 'shrek':
         print("You become vilemaw.")
-        exit(0)
+        webbrowser.open_new('https://www.youtube.com/watch?v=L_jWHffIx5E')
+        quit()
 
     if command in directions:
         try:
