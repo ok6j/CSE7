@@ -353,6 +353,13 @@ you.description = character_description
 you.description = ('a' + ' ' + character_description)
 print("👌😂🔥🍆🍑")
 while True:
+    print("You're floating in nothingness.\n"
+          "A blue wisp floats towards you."
+          '"Hey uh ya kinda died and uh...how do I explain this.."\n'
+          '"You\'re dead and we\'re basically giving you another chance."\n'
+          '"So what do you say?"\n'
+          'Yes(1)\n'
+          'No(2)\n')
     print(current_node.name)
     print(current_node.description)
     print('For info type help.')
