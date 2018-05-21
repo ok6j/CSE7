@@ -345,7 +345,8 @@ short_directions = ['se', 'nw', 's', 'w', 'e', 'n', 'sw', 'ne']
 all_the_commands = ['buy', 'southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast',
                     'se', 'nw', 's', 'w', 'e', 'n', 'sw', 'ne', 'hp', 'money', 'help', 'inv', 'fight', 'stats', 'me',
                     'sell', 'buy', 'heal', 'think', 'shrek', 'snap', 'easter eggs', 'info']
-
+yes = 'yes'
+no = 'no'
 character_name = input('What do you want to be named?\n>_')
 you.name = character_name
 character_description = input('How would you describe yourself?\na:')
@@ -353,6 +354,14 @@ you.description = character_description
 you.description = ('a' + ' ' + character_description)
 print("👌😂🔥🍆🍑")
 while True:
+    print("You're floating in nothingness.\n"
+          "A blue wisp floats towards you."
+          '"Hey uh ya kinda died and uh...how do I explain this.."\n'
+          '"You\'re dead and we\'re basically giving you another chance."\n'
+          '"So what do you say?"\n'
+          'Yes(0)\n'
+          'No(1)\n')
+
     print(current_node.name)
     print(current_node.description)
     print('For info type help.')
@@ -361,7 +370,11 @@ while True:
     if current_node != east_shopkeeper_platform:
         if command == 'hello':
             print("There are some wolves on the east side.")
-
+    if command == yes:
+        print('aight lets do this!')
+    if command == no:
+        print("Aight understandable...")
+        quit()
     # if command == 'help' and  '?' and ''
 
     if command == 'heal':
